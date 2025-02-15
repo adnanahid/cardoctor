@@ -3,7 +3,7 @@ import React from "react";
 
 export default function AboutUs() {
   return (
-    <div className="mt-36 max-w-screen-lg mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-8 px-6 md:px-0">
+    <div className="my-16 max-w-screen-lg mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-8 px-6 md:px-0">
       {/* Image Section */}
       <div className="relative w-full h-full ">
         {/* Main Person Image */}

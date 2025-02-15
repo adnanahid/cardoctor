@@ -25,7 +25,7 @@ export default function App() {
     <Swiper
       navigation={true}
       modules={[Navigation]}
-      className="mySwiper h-[600px]"
+      className="mySwiper h-[600px] mb-32"
     >
       {banners.map((banner, index) => (
         <SwiperSlide
