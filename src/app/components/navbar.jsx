@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import logo from "../assets/logo.svg";
 
 export default function () {
   return (
@@ -36,7 +35,7 @@ export default function () {
           </div>
         </div>
         <Link href={"/"}>
-          <Image src={logo} width={50} height={70} alt="logo" />
+          <Image src={'/assets/logo.svg'} width={50} height={70} alt="logo" />
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
