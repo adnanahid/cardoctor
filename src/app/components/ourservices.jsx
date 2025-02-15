@@ -1,7 +1,9 @@
-import database from "@/lib/database";
+import database, { collections } from "@/lib/database";
+import Link from "next/link";
+import { FaArrowCircleRight } from "react-icons/fa";
 
 export default async function OurServices() {
-  const serviceCollection = database("services");
+  const serviceCollection = database(collections.services);
   const services = await serviceCollection.find().toArray();
 
   return (
@@ -18,9 +20,9 @@ export default async function OurServices() {
 
       {/* Render services in a grid layout */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
-        {services.map((service, index) => (
+        {services.map((service) => (
           <div
-            key={index}
+            key={service._id}
             className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow"
           >
             {/* Service Image */}
@@ -38,7 +40,9 @@ export default async function OurServices() {
               <p className="text-[#FF3811] font-semibold mt-2">
                 ${service.price}
               </p>
-              <button className="btn btn-outline btn-sm">Details</button>
+              <Link href={`/services/${service._id}`} className="">
+                <FaArrowCircleRight className="text-2xl" />
+              </Link>
             </div>
           </div>
         ))}
