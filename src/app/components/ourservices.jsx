@@ -1,22 +1,8 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import Image from "next/image";
+import database from "@/lib/database";
 
-export default function OurServices() {
-  const [services, setServices] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch("/services.json"); // Fetch data from JSON file
-        const data = await res.json(); // Parse JSON data
-        setServices(data); // Set services state
-      } catch (error) {
-        console.log("Error fetching services:", error);
-      }
-    };
-    fetchData(); // Call the fetch function
-  }, []);
+export default async function OurServices() {
+  const serviceCollection = database("services");
+  const services = await serviceCollection.find().toArray();
 
   return (
     <section className="mt-32 container mx-auto px-4">
@@ -34,7 +20,7 @@ export default function OurServices() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
         {services.map((service, index) => (
           <div
-            key={service._id}
+            key={index}
             className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow"
           >
             {/* Service Image */}
@@ -47,24 +33,12 @@ export default function OurServices() {
             {/* Service Title */}
             <h2 className="text-xl font-bold mt-4">{service.title}</h2>
 
-            {/* Service Price */}
-            <p className="text-[#FF3811] font-semibold mt-2">
-              ${service.price}
-            </p>
-
-            {/* Service Description */}
-            <p className="text-gray-600 mt-2">
-              {service.description.split(" ").slice(0, 20).join(" ")}...
-            </p>
-
-            {/* Service Facilities */}
-            <div className="mt-4 space-y-2">
-              {service.facility.map((facility, idx) => (
-                <div key={idx} className="flex items-center space-x-2">
-                  <span className="text-[#FF3811]">✔</span>
-                  <p className="text-gray-600">{facility.name}</p>
-                </div>
-              ))}
+            <div className="flex justify-between items-center">
+              {/* Service Price */}
+              <p className="text-[#FF3811] font-semibold mt-2">
+                ${service.price}
+              </p>
+              <button className="btn btn-outline btn-sm">Details</button>
             </div>
           </div>
         ))}
