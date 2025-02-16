@@ -40,7 +40,7 @@ export default async function OurServices() {
               <p className="text-[#FF3811] font-semibold mt-2">
                 ${service.price}
               </p>
-              <Link href={`/services/${service._id}`} className="">
+              <Link href={`/service/${service._id}`} className="">
                 <FaArrowCircleRight className="text-2xl" />
               </Link>
             </div>

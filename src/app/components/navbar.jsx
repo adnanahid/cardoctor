@@ -47,8 +47,11 @@ export default function () {
           <Link href={"/"}>Contact</Link>
         </div>
       </div>
-      <div className="navbar-end">
-        <a className="btn btn-outline">Appointment</a>
+      <div className="navbar-end space-x-2">
+        <Link href={"/register"}><button className="btn btn-sm">Register</button></Link>
+        <Link href={"/login"}><button className="btn btn-sm">Login</button></Link>
+        {/* <a className="btn btn-sm">Appointment</a> */}
+
       </div>
     </div>
   );
