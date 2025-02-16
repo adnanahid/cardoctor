@@ -1,7 +1,5 @@
 import Image from "next/image";
-
 import React from "react";
-
 import RegisterForm from "./components/registerform";
 
 export default function RegisterPage() {

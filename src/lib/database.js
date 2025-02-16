@@ -2,6 +2,7 @@ import { MongoClient, ServerApiVersion } from "mongodb";
 
 export const collections = {
   services: "services",
+  users: "users",
 };
 
 export default function database(collectionName) {

@@ -1,9 +1,7 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import { FaFacebookF, FaLinkedinIn, FaGoogle } from "react-icons/fa";
-// import { registerUser } from "@/app/actions/auth/registerUser";
-// import SocialLogin from "@/app/login/components/SocialLogin";
+import axios from "axios";
 export default function RegisterForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -11,7 +9,16 @@ export default function RegisterForm() {
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    // await registerUser({ name, email, password });
+    const userInfo = { name, email, password };
+
+    try {
+      const res = await axios.post("http://localhost:3000/register/api/register", userInfo);
+      console.log("Saved:", res.data);
+      alert("Menu added successfully");
+    } catch (error) {
+      console.error(error);
+      alert("Failed to add menu. Please try again.");
+    }
   };
   return (
     <form onSubmit={handleSubmit} className="w-full max-w-lg space-y-8">
